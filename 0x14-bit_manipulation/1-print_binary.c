@@ -9,39 +9,21 @@
  */
 void print_binary(unsigned long int n)
 {
+	int a, b = 0;
+	unsigned long int new;
 
-	int numBits = sizeof(unsigned long int) * 8;
-	int i;
-
-	for (i = numBits - 1; i >= 0; i--)
+	for (a = 63; a >= 0; a--)
 	{
-	unsigned long int mask = 1UL << i;
-
-	if (n & mask)
-	{
-		printf("1");
+		new = n >> a;
+		if (new & 1)
+		{
+			_putchar('1');
+			b++;
+		}
+		else if (new)
+			_putchar('0');
 	}
-	else
-	{
-		printf("0");
-	}
-	}
-		printf("\n");
-}
-
-/**
- * print_binary - prints a number in binary notation
- * @n: number to print
- *
- * Return: 0
- */
-
-int main(void)
-{
-	unsigned long int num = 42;
-
-	printf("Binary representation of %lu: ", num);
-	print_binary(num);
-	return (0);
+	if (!new)
+		_putchar('0');
 }
 
